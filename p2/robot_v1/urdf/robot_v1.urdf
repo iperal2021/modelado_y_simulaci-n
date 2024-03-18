@@ -1,0 +1,70 @@
+<robot name="robot_v1" version="1.0">
+  <joint name="rueda_a_d_link_joint" type="continuous">
+    <limit lower="0" upper="0" effort="0.00000" velocity="0.00000"/>
+    <origin rpy="0.00000 -1.57080 0.00000" xyz="-1.00000 2.74000 -1.65000"/>
+    <parent link="cuerpo_link"/>
+    <child link="rueda_a_d_link"/>
+    <axis xyz="0.00000 0.00000 1.00000"/>
+  </joint>
+  <joint name="rueda_a_i_link_joint" type="continuous">
+    <limit lower="0" upper="0" effort="0.00000" velocity="0.00000"/>
+    <origin rpy="-0.00000 1.57080 0.00000" xyz="1.00000 2.74000 -1.65000"/>
+    <parent link="cuerpo_link"/>
+    <child link="rueda_a_i_link"/>
+    <axis xyz="0.00000 0.00000 1.00000"/>
+  </joint>
+  <joint name="rueda_d_l_link_joint" type="continuous">
+    <limit lower="0" upper="0" effort="0.00000" velocity="0.00000"/>
+    <origin rpy="-0.00000 1.57080 0.00000" xyz="1.00000 -0.26000 -1.65000"/>
+    <parent link="cuerpo_link"/>
+    <child link="rueda_d_l_link"/>
+    <axis xyz="0.00000 0.00000 1.00000"/>
+  </joint>
+  <joint name="rueda_d_r_link_joint" type="continuous">
+    <limit lower="0" upper="0" effort="0.00000" velocity="0.00000"/>
+    <origin rpy="0.00000 -1.57080 0.00000" xyz="-1.00000 -0.26000 -1.65000"/>
+    <parent link="cuerpo_link"/>
+    <child link="rueda_d_r_link"/>
+    <axis xyz="0.00000 0.00000 1.00000"/>
+  </joint>
+  <link name="cuerpo_link">
+    <visual name="cuerpo">
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+      <geometry>
+        <mesh filename="../meshes/stl/Cubo.009.stl" scale="0.90000 0.70000 0.50000"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="rueda_a_d_link">
+    <visual name="rueda_a_d">
+      <origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 0.00000 -0.00000"/>
+      <geometry>
+        <mesh filename="../meshes/stl/Cilindro.stl" scale="0.55000 0.55000 0.15000"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="rueda_a_i_link">
+    <visual name="rueda_a_i">
+      <origin rpy="0.00000 0.00000 0.00000" xyz="-0.00000 0.00000 -0.00000"/>
+      <geometry>
+        <mesh filename="../meshes/stl/Cilindro.stl" scale="0.55000 0.55000 0.15000"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="rueda_d_l_link">
+    <visual name="rueda_d_l">
+      <origin rpy="0.00000 0.00000 0.00000" xyz="-0.00000 0.00000 -0.00000"/>
+      <geometry>
+        <mesh filename="../meshes/stl/Cilindro.stl" scale="0.55000 0.55000 0.15000"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="rueda_d_r_link">
+    <visual name="rueda_d_r">
+      <origin rpy="0.00000 -0.00000 0.00000" xyz="0.00000 0.00000 -0.00000"/>
+      <geometry>
+        <mesh filename="../meshes/stl/Cilindro.stl" scale="0.55000 0.55000 0.15000"/>
+      </geometry>
+    </visual>
+  </link>
+</robot>

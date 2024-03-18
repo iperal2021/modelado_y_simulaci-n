@@ -1,0 +1,1 @@
+Existen dos archivos diferentes para la rampa y la barrera. Esto se debe a problemas con las inercias y posiciones de los cuerpos. Cada código utiliza el **URDF** con el que ha sido grabada su ejecución.
