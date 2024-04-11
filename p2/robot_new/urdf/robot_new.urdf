@@ -1,0 +1,350 @@
+<robot name="robot_new" version="1.0">
+  <joint name="cabeza_pinza_link_joint_" type="continuous">
+    <limit lower="0" upper="0" effort="0.00000" velocity="0.00000"/>
+    <origin rpy="1.57080 0.00000 -0.00000" xyz="0.00498 -1.99000 -0.00000"/>
+    <parent link="eje_brazo_4_link"/>
+    <child link="cabeza_pinza_link"/>
+    <axis xyz="0.00000 0.00000 1.00000"/>
+  </joint>
+
+  <!-- <joint name="eje_brazo_1_joint_" type="continuous">
+    <limit lower="0" upper="0" effort="0.00000" velocity="0.00000"/>
+    <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.10000 0.88077"/>
+    <parent link="cuerpo_link"/>
+    <child link="eje_brazo_1_link"/>
+    <axis xyz="0.00000 0.00000 1.00000"/>
+  </joint> -->
+
+  <joint name="eje_brazo_1_joint_" type="revolute">
+    <limit lower="0.00000" upper="0.00000" effort="0.00000" velocity="0.00000"/>
+    <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.10000 0.88077"/>
+    <parent link="cuerpo_link"/>
+    <child link="eje_brazo_1_link"/>
+    <axis xyz="0.00000 0.00000 1.00000"/>
+  </joint>
+
+  <joint name="eje_brazo_2_joint_" type="revolute">
+    <limit lower="-1.00000" upper="1.30000" effort="0.00000" velocity="0.00000"/>
+    <origin rpy="-0.00000 1.57080 0.00000" xyz="0.00000 -0.00000 0.00000"/>
+    <parent link="eje_brazo_1_link"/>
+    <child link="eje_brazo_2_link"/>
+    <axis xyz="0.00000 0.00000 1.00000"/>
+  </joint>
+
+  <joint name="eje_brazo_3" type="revolute">
+    <limit lower="-1.00000" upper="1.30000" effort="0.00000" velocity="0.00000"/>
+    <origin rpy="0.00000 0.00000 0.00000" xyz="-1.44730 0.00000 0.00000"/>
+    <parent link="eje_brazo_2_link"/>
+    <child link="eje_brazo_3_link"/>
+    <axis xyz="0.00000 0.00000 1.00000"/>
+  </joint>
+
+  <joint name="eje_brazo_4_joint_" type="revolute">
+    <limit lower="-1.00000" upper="1.30000" effort="0.00000" velocity="0.00000"/>
+    <origin rpy="0.00000 0.00000 0.00000" xyz="-1.73691 -0.00000 0.00000"/>
+    <parent link="eje_brazo_3_link"/>
+    <child link="eje_brazo_4_link"/>
+    <axis xyz="0.00000 0.00000 1.00000"/>
+  </joint>
+
+  <joint name="garra_left_joint" type="prismatic">
+    <limit lower="0.00000" upper="1.5" effort="0.00000" velocity="0.00000"/>
+    <origin rpy="-1.57080 0.00000 -3.14159" xyz="-0.00000 0.44000 0.61000"/>
+    <parent link="cabeza_pinza_link"/>
+    <child link="garra_izquierda_link"/>
+    <axis xyz="0.00000 0.00000 1.00000"/>
+  </joint>
+
+  <joint name="garra_right_joint" type="prismatic">
+    <limit lower="0.00000" upper="1.5" effort="0.00000" velocity="0.00000"/>
+    <origin rpy="-1.57080 0.00000 0.00000" xyz="-0.00000 -0.44000 0.61000"/>
+    <parent link="cabeza_pinza_link"/>
+    <child link="garra_derecha_link"/>
+    <axis xyz="0.00000 0.00000 1.00000"/>
+  </joint>
+
+  <joint name="rueda_a_d_link_joint" type="continuous">
+    <limit lower="0" upper="0" effort="0.00000" velocity="0.00000"/>
+    <origin rpy="-0.00000 1.57080 0.00000" xyz="-1.00000 2.74000 -1.65000"/>
+    <parent link="cuerpo_link"/>
+    <child link="rueda_a_d_link"/>
+    <axis xyz="0.00000 0.00000 1.00000"/>
+  </joint>
+
+  <joint name="rueda_a_i_link_joint" type="continuous">
+    <limit lower="0" upper="0" effort="0.00000" velocity="0.00000"/>
+    <origin rpy="-0.00000 1.57080 0.00000" xyz="1.00000 2.74000 -1.65000"/>
+    <parent link="cuerpo_link"/>
+    <child link="rueda_a_i_link"/>
+    <axis xyz="0.00000 0.00000 1.00000"/>
+  </joint>
+
+  <joint name="rueda_d_l_link_joint" type="continuous">
+    <limit lower="0" upper="0" effort="0.00000" velocity="0.00000"/>
+    <origin rpy="-0.00000 1.57080 0.00000" xyz="1.00000 -0.26000 -1.65000"/>
+    <parent link="cuerpo_link"/>
+    <child link="rueda_d_l_link"/>
+    <axis xyz="0.00000 0.00000 1.00000"/>
+  </joint>
+
+  <joint name="rueda_d_r_link_joint" type="continuous">
+    <limit lower="0" upper="0" effort="0.00000" velocity="0.00000"/>
+    <origin rpy="-0.00000 1.57080 0.00000" xyz="-1.00000 -0.26000 -1.65000"/>
+    <parent link="cuerpo_link"/>
+    <child link="rueda_d_r_link"/>
+    <axis xyz="0.00000 0.00000 1.00000"/>
+  </joint>
+
+  <link name="cabeza_pinza_link">
+    <collision name="cabeza_pinza_collision">
+      <origin rpy="0.00000 0.00000 0.00000" xyz="-0.00000 0.00000 0.00000"/>
+      <geometry>
+        <mesh filename="../meshes/stl/Cilindro.003.stl" scale="1.16667 1.29630 0.08029"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <inertia ixx="0.00200" ixy="-0.00000" ixz="-0.00000" iyy="0.00200" iyz="0.00000" izz="0.00200"/>
+      <origin rpy="0.00000 0.00000 0.00000" xyz="-0.00000 -0.00000 0.00000"/>
+      <mass value="0.10000"/>
+    </inertial>
+    <visual name="cabeza_pinza">
+      <origin rpy="0.00000 0.00000 0.00000" xyz="-0.00000 0.00000 0.00000"/>
+      <geometry>
+        <mesh filename="../meshes/stl/Cilindro.003.stl" scale="1.16667 1.29630 0.08029"/>
+      </geometry>
+    </visual>
+  </link>
+
+  <link name="cuerpo_link">
+    <inertial>
+      <inertia ixx="0.01200" ixy="0.00000" ixz="0.00000" iyy="0.01200" iyz="0.00000" izz="0.01200"/>
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+      <mass value="180.25000"/>
+    </inertial>
+    <visual name="cuerpo">
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+      <geometry>
+        <mesh filename="../meshes/stl/cuerpo.stl" scale="0.90000 0.70000 0.50000"/>
+      </geometry>
+    </visual>
+  </link>
+
+  <!-- <link name="eje_brazo_1_link">
+    <collision name="eje_brazo_1_collision">
+      <origin rpy="-0.00000 1.57080 0.00000" xyz="0.00000 -0.00000 0.00000"/>
+      <geometry>
+        <mesh filename="../meshes/stl/Cilindro.006.stl" scale="1.00000 1.00000 0.08029"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <inertia ixx="0.00200" ixy="-0.00000" ixz="-0.00000" iyy="0.00200" iyz="0.00000" izz="0.00200"/>
+      <origin rpy="0.00000 0.00000 0.00000" xyz="-0.00000 -0.00000 0.00000"/>
+      <mass value="0.10000"/>
+    </inertial>
+    <visual name="eje_brazo_1">
+      <origin rpy="-0.00000 1.57080 0.00000" xyz="0.00000 -0.00000 0.00000"/>
+      <geometry>
+        <cylinder radius="0.07500" length="0.60000"/>
+      </geometry>
+    </visual>
+  </link> -->
+
+  <link name="eje_brazo_1_link">
+    <collision name="eje_brazo_1_collision">
+      <origin rpy="-0.00000 1.57080 0.00000" xyz="0.00000 -0.00000 0.00000"/>
+      <geometry>
+        <mesh filename="../meshes/stl/Cilindro.006.stl" scale="1.00000 1.00000 0.08029"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <inertia ixx="0.00200" ixy="-0.00000" ixz="-0.00000" iyy="0.00200" iyz="0.00000" izz="0.00200"/>
+      <origin rpy="0.00000 0.00000 0.00000" xyz="-0.00000 -0.00000 0.00000"/>
+      <mass value="0.10000"/>
+    </inertial>
+    <visual name="eje_brazo_1">
+      <origin rpy="-0.00000 1.57080 0.00000" xyz="0.00000 -0.00000 0.00000"/>
+      <geometry>
+        <mesh filename="../meshes/stl/Cilindro.006.stl" scale="1.00000 1.00000 0.08029"/>
+      </geometry>
+    </visual>
+  </link>
+
+  <link name="eje_brazo_2_link">
+    <collision name="eje_brazo_2_collision">
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 -0.00000"/>
+      <geometry>
+        <mesh filename="../meshes/stl/Cilindro.005.stl" scale="1.00000 1.00000 0.08029"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <inertia ixx="0.00200" ixy="-0.00000" ixz="-0.00000" iyy="0.00200" iyz="0.00000" izz="0.00200"/>
+      <origin rpy="0.00000 0.00000 0.00000" xyz="-0.00000 -0.00000 0.00000"/>
+      <mass value="0.10000"/>
+    </inertial>
+    <visual name="eje_brazo_2">
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 -0.00000"/>
+      <geometry>
+        <mesh filename="../meshes/stl/Cilindro.005.stl" scale="1.00000 1.00000 0.08029"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="eje_brazo_3_link">
+    <collision name="eje_brazo_3_collision">
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 -0.00000 0.00000"/>
+      <geometry>
+        <mesh filename="../meshes/stl/Cilindro.004.stl" scale="1.32427 1.00000 0.08029"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <inertia ixx="0.00200" ixy="-0.00000" ixz="-0.00000" iyy="0.00200" iyz="0.00000" izz="0.00200"/>
+      <origin rpy="0.00000 0.00000 0.00000" xyz="-0.00000 -0.00000 0.00000"/>
+      <mass value="0.10000"/>
+    </inertial>
+    <visual name="eje_brazo_3">
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 -0.00000 0.00000"/>
+      <geometry>
+        <mesh filename="../meshes/stl/Cilindro.004.stl" scale="1.32427 1.00000 0.08029"/>
+      </geometry>
+    </visual>
+
+  </link>
+  <link name="eje_brazo_4_link">
+    <collision name="eje_brazo_4_collision">
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+      <geometry>
+        <mesh filename="../meshes/stl/Cilindro.002.stl" scale="1.00000 1.16745 0.08029"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <inertia ixx="0.00400" ixy="0.00000" ixz="0.00000" iyy="0.00400" iyz="0.00000" izz="0.00400"/>
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 -0.00000 -0.00000"/>
+      <mass value="0.30000"/>
+    </inertial>
+    <visual name="eje_brazo_4">
+      <origin rpy="0.00000 0.00000 0.00000" xyz="0.00000 0.00000 0.00000"/>
+      <geometry>
+        <mesh filename="../meshes/stl/Cilindro.002.stl" scale="1.00000 1.16745 0.08029"/>
+      </geometry>
+    </visual>
+  </link>
+
+  <link name="garra_derecha_link">
+    <collision name="garra_derecha_collision">
+      <origin rpy="0.00000 1.57080 0.00000" xyz="0.00000 -0.00000 0.00000"/>
+      <geometry>
+        <mesh filename="../meshes/stl/Cubo.011.stl" scale="0.05000 0.25000 0.05000"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <inertia ixx="0.00200" ixy="-0.00000" ixz="-0.00000" iyy="0.00200" iyz="0.00000" izz="0.00200"/>
+      <origin rpy="0.00000 0.00000 0.00000" xyz="-0.00000 -0.00000 0.00000"/>
+      <mass value="0.10000"/>
+    </inertial>
+    <visual name="garra_derecha">
+      <origin rpy="-0.00000 1.57080 0.00000" xyz="0.00000 -0.00000 0.00000"/>
+      <geometry>
+        <mesh filename="../meshes/stl/Cubo.011.stl" scale="0.05000 0.25000 0.05000"/>
+      </geometry>
+    </visual>
+  </link>
+  
+  <link name="garra_izquierda_link">
+    <collision name="garra_izquierda_collision">
+      <origin rpy="-0.00000 1.57080 0.00000" xyz="0.00000 -0.00000 0.00000"/>
+      <geometry>
+        <mesh filename="../meshes/stl/Cubo.011.stl" scale="0.05000 0.25000 0.05000"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <inertia ixx="0.00200" ixy="-0.00000" ixz="-0.00000" iyy="0.00200" iyz="0.00000" izz="0.00200"/>
+      <origin rpy="0.00000 0.00000 0.00000" xyz="-0.00000 -0.00000 0.00000"/>
+      <mass value="0.10000"/>
+    </inertial>
+    <visual name="garra_izquierda">
+      <origin rpy="-0.00000 1.57080 0.00000" xyz="0.00000 -0.00000 0.00000"/>
+      <geometry>
+        <mesh filename="../meshes/stl/Cubo.011.stl" scale="0.05000 0.25000 0.05000"/>
+      </geometry>
+    </visual>
+  </link>
+
+  <link name="rueda_a_d_link">
+    <collision name="rueda_a_d_collision">
+      <origin rpy="-3.14159 0.00000 3.14159" xyz="0.00000 0.00000 0.00000"/>
+      <geometry>
+        <mesh filename="../meshes/stl/Cilindro.stl" scale="0.55000 0.55000 0.15000"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <inertia ixx="0.00200" ixy="-0.00000" ixz="-0.00000" iyy="0.00200" iyz="0.00000" izz="0.00200"/>
+      <origin rpy="0.00000 0.00000 0.00000" xyz="-0.00000 -0.00000 0.00000"/>
+      <mass value="20.0000"/>
+    </inertial>
+    <visual name="rueda_a_d">
+      <origin rpy="3.14159 -0.00000 3.14159" xyz="0.00000 0.00000 0.00000"/>
+      <geometry>
+        <mesh filename="../meshes/stl/Cilindro.stl" scale="0.55000 0.55000 0.15000"/>
+      </geometry>
+    </visual>
+  </link>
+
+  <link name="rueda_a_i_link">
+    <collision name="rueda_a_i_collision">
+      <origin rpy="0.00000 0.00000 0.00000" xyz="-0.00000 0.00000 -0.00000"/>
+      <geometry>
+        <mesh filename="../meshes/stl/Cilindro.stl" scale="0.55000 0.55000 0.15000"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <inertia ixx="0.00200" ixy="-0.00000" ixz="-0.00000" iyy="0.00200" iyz="0.00000" izz="0.00200"/>
+      <origin rpy="0.00000 0.00000 0.00000" xyz="-0.00000 -0.00000 0.00000"/>
+      <mass value="20.0000"/>
+    </inertial>
+    <visual name="rueda_a_i">
+      <origin rpy="0.00000 0.00000 0.00000" xyz="-0.00000 0.00000 -0.00000"/>
+      <geometry>
+        <mesh filename="../meshes/stl/Cilindro.stl" scale="0.55000 0.55000 0.15000"/>
+      </geometry>
+    </visual>
+  </link>
+  
+  <link name="rueda_d_l_link">
+    <collision name="rueda_d_l_collision">
+      <origin rpy="0.00000 0.00000 0.00000" xyz="-0.00000 0.00000 -0.00000"/>
+      <geometry>
+        <mesh filename="../meshes/stl/Cilindro.stl" scale="0.55000 0.55000 0.15000"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <inertia ixx="0.00200" ixy="-0.00000" ixz="-0.00000" iyy="0.00200" iyz="0.00000" izz="0.00200"/>
+      <origin rpy="0.00000 0.00000 0.00000" xyz="-0.00000 -0.00000 0.00000"/>
+      <mass value="20.0000"/>
+    </inertial>
+    <visual name="rueda_d_l">
+      <origin rpy="0.00000 0.00000 0.00000" xyz="-0.00000 0.00000 -0.00000"/>
+      <geometry>
+        <mesh filename="../meshes/stl/Cilindro.stl" scale="0.55000 0.55000 0.15000"/>
+      </geometry>
+    </visual>
+  </link>
+
+  <link name="rueda_d_r_link">
+    <collision name="rueda_d_r_collision">
+      <origin rpy="-3.14159 0.00000 3.14159" xyz="0.00000 0.00000 0.00000"/>
+      <geometry>
+        <mesh filename="../meshes/stl/Cilindro.stl" scale="0.55000 0.55000 0.15000"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <inertia ixx="0.00200" ixy="-0.00000" ixz="-0.00000" iyy="0.00200" iyz="0.00000" izz="0.00200"/>
+      <origin rpy="0.00000 0.00000 0.00000" xyz="-0.00000 -0.00000 0.00000"/>
+      <mass value="20.0000"/>
+    </inertial>
+    <visual name="rueda_d_r">
+      <origin rpy="3.14159 -0.00000 3.14159" xyz="0.00000 0.00000 0.00000"/>
+      <geometry>
+        <mesh filename="../meshes/stl/Cilindro.stl" scale="0.55000 0.55000 0.15000"/>
+      </geometry>
+    </visual>
+  </link>
+</robot>
